@@ -1,0 +1,14 @@
+(ns pages.detail-produk
+  (:require ["package:flutter/material.dart" :as m]
+            [cljd.flutter :as f]))
+
+(defn ^m/Widget view [ctx]
+  (f/widget
+   :get [m/Navigator]
+   (m/Scaffold
+    .appBar (m/AppBar
+             .title (m/Text "detail produk"))
+    .body   (m/Center
+             .child (m/ElevatedButton
+                     .onPressed #(.pop navigator)
+                     .child     (m/Text "Go Back!"))))))

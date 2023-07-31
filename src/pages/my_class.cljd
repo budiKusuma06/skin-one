@@ -1,0 +1,15 @@
+(ns pages.my-class
+  (:require ["package:flutter/material.dart" :as m]
+  
+            [helper.font :as helper]
+            [cljd.flutter :as f]))
+
+(defn view []
+  (f/widget
+   (m/Container
+    .decoration (m/BoxDecoration
+                 .border (m/Border.all
+                          .color m/Colors.grey.shade200))
+    .child (m/Column
+            .crossAxisAlignment m/CrossAxisAlignment.start
+            .children [(helper/title "∾ My Class")]))))

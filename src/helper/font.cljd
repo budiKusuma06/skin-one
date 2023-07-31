@@ -1,0 +1,26 @@
+(ns helper.font
+  (:require ["package:flutter/material.dart" :as m]
+            [cljd.flutter :as f]))
+
+(defn Text [text]
+  (m/Text
+   text
+   .style (m/TextStyle
+           .fontFamily "Poppins"
+           .fontSize 18)))
+
+(defn title [text]
+  (m/Text
+   text
+   .style (m/TextStyle
+           .fontFamily "Poppins"
+           .fontSize 24
+           .fontWeight m/FontWeight.bold)))
+
+(defn sub-title [text]
+  (m/Text
+   text
+   .style (m/TextStyle
+           .fontFamily "Poppins"
+           .fontSize 20
+           .fontWeight m/FontWeight.bold)))

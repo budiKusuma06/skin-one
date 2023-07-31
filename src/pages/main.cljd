@@ -1,0 +1,70 @@
+(ns pages.main
+  (:require ["package:flutter/material.dart" :as m]
+            
+            [pages.explore :as explore]
+            [pages.search :as search]
+            [pages.my-class :as my-class]
+            [pages.main-menu :as main-menu]
+
+            [helper.font :as helper]
+            [cljd.flutter :as f]))
+
+(def initBotnav (atom 0))
+
+(def pages
+  (list (explore/view)
+        (search/view)
+        (my-class/view)
+        (main-menu/view)))
+
+(defn ^m/Widget view [ctx]
+  (f/widget
+   :watch [valBotnav initBotnav]
+   (m/Scaffold
+    .backgroundColor m/Colors.white
+    .appBar (m/PreferredSize
+             .preferredSize (m/Size.fromHeight 50)
+             .child (m/AppBar
+                     .backgroundColor (m/Colors.white.withOpacity 0.8)
+                     .elevation 0
+                     .title (m/Center
+                             .child (m/Text
+                                     "Loogo°"
+                                     .style (m/TextStyle
+                                             .color (m/Color 0xff37a9dd)
+                                             .fontFamily "Poppins"
+                                             .fontSize 24
+                                             .fontWeight m/FontWeight.w600)))))
+    .body (m/Padding
+           .padding (m/EdgeInsets.symmetric
+                     .horizontal 12
+                     .vertical 10)
+           .child (case valBotnav
+                    0 (nth pages 0)
+                    1 (nth pages 1)
+                    2 (nth pages 2) 
+                    3 (nth pages 3)
+                    (nth pages 0)))
+    .bottomNavigationBar (m/BottomNavigationBar
+                          .items [(m/BottomNavigationBarItem
+                                   .icon (m/Icon m/Icons.explore)
+                                   .label "●")
+                                  (m/BottomNavigationBarItem
+                                   .icon (m/Icon m/Icons.search)
+                                   .label "●")
+                                  (m/BottomNavigationBarItem
+                                   .icon (m/Icon m/Icons.class_)
+                                   .label "●")
+                                  (m/BottomNavigationBarItem
+                                   .icon (m/Icon m/Icons.apps_rounded)
+                                   .label "●")]
+                          .selectedItemColor (m/Color 0xff37a9dd)
+                          .unselectedItemColor (m/Colors.grey.withOpacity 0.5)
+                          .showSelectedLabels true
+                          .showUnselectedLabels false
+                          .elevation 0
+                          .type m/BottomNavigationBarType.fixed
+                          .backgroundColor (m/Colors.white.withOpacity 0.8)
+                          .currentIndex valBotnav
+                          .onTap (fn [idx]
+                                   (reset! initBotnav idx))))))

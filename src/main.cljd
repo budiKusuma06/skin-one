@@ -1,0 +1,14 @@
+(ns main
+  (:require ["package:flutter/material.dart" :as m]
+            [pages.main :as main]
+            [pages.detail-produk :as dp]
+            [cljd.flutter :as f]))
+
+(defn main []
+  (f/run
+   (m/MaterialApp
+    .debugShowCheckedModeBanner false
+    .title "Navigation Basics"
+    .initialRoute "/"
+    .routes       {"/" main/view
+                   "/detail-produk" dp/view})))
