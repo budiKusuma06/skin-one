@@ -17,6 +17,12 @@
         (my-class/view)
         (main-menu/view)))
 
+(def page-routes
+  (list "/explore"
+        "/search"
+        "/my-class"
+        "/main-menu")
+
 (defn ^m/Widget view [ctx]
   (f/widget
    :watch [valBotnav initBotnav]
@@ -67,4 +73,4 @@
                           .backgroundColor (m/Colors.white.withOpacity 0.8)
                           .currentIndex valBotnav
                           .onTap (fn [idx]
-                                   (reset! initBotnav idx))))))
+                                   (.pushNamed navigator "/second")))))
