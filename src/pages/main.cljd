@@ -21,7 +21,7 @@
   (list "/explore"
         "/search"
         "/my-class"
-        "/main-menu")
+        "/main-menu"))
 
 (defn ^m/Widget view [ctx]
   (f/widget
