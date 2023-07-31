@@ -73,4 +73,4 @@
                           .backgroundColor (m/Colors.white.withOpacity 0.8)
                           .currentIndex valBotnav
                           .onTap (fn [idx]
-                                   (.pushNamed navigator "/second")))))
+                                   (.pushNamed navigator (nth pages idx))))))
